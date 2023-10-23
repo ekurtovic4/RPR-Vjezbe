@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9283945-5873-4c2c-99c8-2e1b8b891676" name="Changes" comment="." />
+    <list default="true" id="f9283945-5873-4c2c-99c8-2e1b8b891676" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/../rpr-t1-z2/out/production/untitled104/ba/unsa/etf/rpr/predavanje02/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../rpr-t1-z2/out/production/untitled104/ba/unsa/etf/rpr/predavanje02/Main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +78,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.predavanje02.Main" />
@@ -122,6 +128,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
