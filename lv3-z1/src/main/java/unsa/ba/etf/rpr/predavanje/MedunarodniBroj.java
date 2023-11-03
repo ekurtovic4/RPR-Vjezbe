@@ -3,8 +3,8 @@ package unsa.ba.etf.rpr.predavanje;
 import java.util.Objects;
 
 public class MedunarodniBroj extends TelefonskiBroj{
-    String dr, br;
-    MedunarodniBroj(String drzava, String broj){
+    private String dr, br;
+    public MedunarodniBroj(String drzava, String broj){
         dr = drzava; br = broj;
     }
     @Override

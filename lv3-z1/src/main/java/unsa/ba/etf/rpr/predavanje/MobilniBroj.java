@@ -3,9 +3,9 @@ package unsa.ba.etf.rpr.predavanje;
 import java.util.Objects;
 
 public class MobilniBroj extends TelefonskiBroj{
-    int mreza;
-    String br;
-    MobilniBroj(int mobilnaMreza, String broj){
+    private int mreza;
+    private String br;
+    public MobilniBroj(int mobilnaMreza, String broj){
         mreza = mobilnaMreza; br = broj;
     }
     @Override
