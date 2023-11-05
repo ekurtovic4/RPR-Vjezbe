@@ -9,13 +9,13 @@ public class Indeks {
         ocjene = new TreeMap<String, String>();
     }
 
-    public void upisiOcjenu(Predmet p, Integer o){
+    /*public void upisiOcjenu(Predmet p, Integer o){ //verzija koja je planirana da se koristi, moze sa spy
         ocjene.put(p.dajSifru(), o.toString());
-    }
-
-    /*public void upisiOcjenu(Predmet p, Integer o){ //verzija za kad se koristi samo Mockito.mock u testu
-        ocjene.put("abcd", o.toString());
     }*/
+
+    public void upisiOcjenu(Predmet p, Integer o){ //verzija za kad se koristi samo mock u testu
+        ocjene.put("abcd", o.toString());
+    }
 
     public int dajBrojPolozenih(){ return ocjene.size(); }
 }
