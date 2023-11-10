@@ -30,6 +30,13 @@ public class Main {
         catch(Exception e){
             System.out.println("Greska: " + e);
         }
+        ArrayList<Laptop> l = new ArrayList<>();
+        l.add(new Laptop("b10", "m10", 200, 9, 8, 66, "p10", "g10", 90));
+        ls.napuniListu(l);
+        ls.dodajLaptopUFile(new Laptop("b11", "m11", 102, 51, 61, 81, "p11", "g11", 221));
+        lista = ls.vratiPodatkeIzDatoteke();
+        for (Laptop laptop : lista)
+            System.out.println(laptop.getModel());
         System.out.println();
 
         //testni program za LaptopDaoJSONFile
@@ -58,6 +65,13 @@ public class Main {
         catch(Exception e){
             System.out.println("Greska: " + e);
         }
+        l.clear();
+        l.add(new Laptop("b", "m", 100, 1, 2, 3, "p", "g", 10));
+        lj.napuniListu(l);
+        lj.dodajLaptopUFile(new Laptop("b2", "m2", 121, 41, 91, 32, "p2", "g2", 21));
+        lista = lj.vratiPodatkeIzDatoteke();
+        for (Laptop laptop : lista)
+            System.out.println(laptop.getModel());
         System.out.println();
 
         //testni program za LaptopDaoXMLFile
@@ -86,6 +100,13 @@ public class Main {
         catch(Exception e){
             System.out.println("Greska: " + e);
         }
+        l.clear();
+        l.add(new Laptop("b10", "m10", 200, 9, 8, 66, "p10", "g10", 90));
+        lx.napuniListu(l);
+        lx.dodajLaptopUFile(new Laptop("b21", "m21", 1211, 141, 911, 42, "p21", "g21", 661));
+        lista = lx.vratiPodatkeIzDatoteke();
+        for (Laptop laptop : lista)
+            System.out.println(laptop.getModel());
         System.out.println();
     }
 }
