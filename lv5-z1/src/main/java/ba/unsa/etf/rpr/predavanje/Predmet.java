@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Predmet implements Predstavljanje{
     private String naziv, opis;
-    ArrayList<Ocjena> ocjene = new ArrayList<>();
+    private ArrayList<Ocjena> ocjene = new ArrayList<>();
     public String getNaziv() {
         return naziv;
     }

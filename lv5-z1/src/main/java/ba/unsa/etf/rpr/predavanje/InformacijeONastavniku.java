@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class InformacijeONastavniku extends LicneInformacije implements Predstavljanje, MozeOcijeniti{
     private String ime, prezime, titula;
-    ArrayList<Ocjena> ocjene = new ArrayList<>();
+    private ArrayList<Ocjena> ocjene = new ArrayList<>();
     @Override
     public String getIme() {
         return ime;
