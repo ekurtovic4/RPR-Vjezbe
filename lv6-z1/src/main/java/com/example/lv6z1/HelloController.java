@@ -1,13 +1,31 @@
 package com.example.lv6z1;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import static java.lang.Math.pow;
 
 public class HelloController {
+    public Button btn0;
+    public Button btn1;
+    public Button btn4;
+    public Button btn7;
+    public Button modBtn;
+    public Button btn2;
+    public Button btn5;
+    public Button btn8;
+    public Button divBtn;
+    public Button mulBtn;
+    public Button minusBtn;
+    public Button btn9;
+    public Button btn6;
+    public Button btn3;
+    public Button dotBtn;
+    public Button plusBtn;
+    public Button equalsBtn;
     @FXML
-    private Label result;
+    private Label display;
     private StringBuilder string = new StringBuilder();
     private boolean eqWasCalled = false;
     private void calculate(){
@@ -18,7 +36,7 @@ public class HelloController {
             i++;
         }
         if(!(i < string.length())){
-            result.setText(String.valueOf(a));
+            display.setText(String.valueOf(a));
             return;
         }
 
@@ -34,14 +52,14 @@ public class HelloController {
             }
             a = a + tmp / pow(10, dec);
             if(!(i < string.length())){
-                result.setText(String.valueOf(a));
+                display.setText(String.valueOf(a));
                 return;
             }
             operator = string.charAt(i);
             i++;
         }
         if(!(i < string.length())){
-            result.setText("Error");
+            display.setText("Error");
             return;
         }
 
@@ -71,134 +89,134 @@ public class HelloController {
         else if(operator == '/') c = a / b;
         else if(operator == '%') c = a % b;
 
-        result.setText(String.valueOf(c));
+        display.setText(String.valueOf(c));
     }
 
     @FXML
     protected void onButtonModClick() {
-        result.setText(result.getText() + "%");
+        display.setText(display.getText() + "%");
         string.append('%');
     }
     @FXML
     protected void onButtonDivClick() {
-        result.setText(result.getText() + "/");
+        display.setText(display.getText() + "/");
         string.append('/');
     }
     @FXML
     protected void onButtonMulClick() {
-        result.setText(result.getText() + "x");
+        display.setText(display.getText() + "x");
         string.append('x');
     }
     @FXML
     protected void onButtonMinusClick() {
-        result.setText(result.getText() + "-");
+        display.setText(display.getText() + "-");
         string.append('-');
     }
     @FXML
     protected void onButtonPlusClick() {
-        result.setText(result.getText() + "+");
+        display.setText(display.getText() + "+");
         string.append('+');
     }
     @FXML
     protected void onButtonEqClick() throws InterruptedException {
-        result.setText(result.getText() + "=");
+        display.setText(display.getText() + "=");
         calculate();
         string.setLength(0);
         eqWasCalled = true;
     }
     @FXML
     protected void onButtonPtClick() {
-        result.setText(result.getText() + ".");
+        display.setText(display.getText() + ".");
         string.append('.');
     }
     @FXML
     protected void onButton0Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "0");
+        display.setText(display.getText() + "0");
         string.append('0');
     }
     @FXML
     protected void onButton1Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "1");
+        display.setText(display.getText() + "1");
         string.append('1');
     }
     @FXML
     protected void onButton2Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "2");
+        display.setText(display.getText() + "2");
         string.append('2');
     }
     @FXML
     protected void onButton3Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "3");
+        display.setText(display.getText() + "3");
         string.append('3');
     }
     @FXML
     protected void onButton4Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "4");
+        display.setText(display.getText() + "4");
         string.append('4');
     }
     @FXML
     protected void onButton5Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "5");
+        display.setText(display.getText() + "5");
         string.append('5');
     }
     @FXML
     protected void onButton6Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "6");
+        display.setText(display.getText() + "6");
         string.append('6');
     }
     @FXML
     protected void onButton7Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "7");
+        display.setText(display.getText() + "7");
         string.append('7');
     }
     @FXML
     protected void onButton8Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "8");
+        display.setText(display.getText() + "8");
         string.append('8');
     }
     @FXML
     protected void onButton9Click() {
         if(eqWasCalled){
-            result.setText("");
+            display.setText("");
             eqWasCalled = false;
         }
-        result.setText(result.getText() + "9");
+        display.setText(display.getText() + "9");
         string.append('9');
     }
 }
