@@ -1,6 +1,7 @@
 package DAL;
 
 import javafx.beans.property.SimpleObjectProperty;
+import org.sqlite.SQLiteException;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -68,11 +69,16 @@ public class GeografijaDAO {
         }
     }
     public void vratiNaDefault() throws SQLException {
-        Statement stmt = conn.createStatement();
-        stmt.executeUpdate("UPDATE grad SET drzava = NULL;");
-        stmt.executeUpdate("DELETE FROM drzava;");
-        stmt.executeUpdate("DELETE FROM grad;");
-        regenerisiBazu();
+        try{
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate("UPDATE grad SET drzava = NULL;");
+            stmt.executeUpdate("DELETE FROM drzava;");
+            stmt.executeUpdate("DELETE FROM grad;");
+            regenerisiBazu();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     private void regenerisiBazu(){
         try{
@@ -224,7 +230,7 @@ public class GeografijaDAO {
             e.printStackTrace();
         }
     }
-    public void dodajGrad(Grad grad){
+    public void dodajGrad(Grad grad) throws SQLiteException {
         try{
             PreparedStatement ps1 = conn.prepareStatement("INSERT INTO grad VALUES (?, ?, ?, NULL);");
             int j = zadnjiIndeksGrada()+1;
@@ -258,6 +264,9 @@ public class GeografijaDAO {
                 ps3.setInt(2, j);
                 ps3.executeUpdate();
             }
+        }
+        catch(org.sqlite.SQLiteException e){
+            throw e; //za alert korisniku
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -381,7 +390,7 @@ public class GeografijaDAO {
             PreparedStatement ps = conn.prepareStatement("SELECT d.naziv, g.broj_stanovnika FROM drzava d, grad g WHERE g.naziv = ? AND g.drzava = d.id;");
             ps.setString(1, grad);
             ResultSet result = ps.executeQuery();
-            return new Grad(grad, result.getInt(1), result.getString(2));
+            return new Grad(grad, result.getInt(2), result.getString(1));
         }
         catch (SQLException e) {
             e.printStackTrace();

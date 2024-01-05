@@ -12,7 +12,7 @@
                     <HBox.margin>
                         <Insets left="15.0" top="20.0" />
                     </HBox.margin></Label>
-                <TextField fx:id="fieldNaziv" prefHeight="26.0" prefWidth="175.0">
+                <TextField fx:id="fieldNaziv" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #ee8787;">
                     <HBox.margin>
                         <Insets left="62.0" top="15.0" />
                     </HBox.margin></TextField>
@@ -28,7 +28,7 @@
                   <Insets left="15.0" right="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="fieldBrojStanovnika" prefHeight="26.0" prefWidth="175.0" />
+            <TextField fx:id="fieldBrojStanovnika" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #ee8787;" />
          </children></HBox>
         <HBox prefHeight="39.0" prefWidth="327.0">
             <children>

@@ -6,12 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.text.BreakIterator;
 import java.util.List;
+
+import static java.lang.Math.floor;
 
 public class GradController {
     @FXML
@@ -75,12 +77,46 @@ public class GradController {
             izabranaDrzava();
         });
 
+        fieldNaziv.textProperty().addListener((obs, oldDrzava, newDrzava) -> {
+            if(fieldNaziv.getText().trim().isEmpty()){
+                fieldNaziv.setStyle("-fx-control-inner-background: #ee8787;");
+            }
+            else{
+                fieldNaziv.setStyle("-fx-control-inner-background: white;");
+            }
+        });
+
+        fieldBrojStanovnika.textProperty().addListener((obs, oldBroj, newBroj) -> {
+            String brStanovnika = fieldBrojStanovnika.getText();
+            boolean neispravno = false;
+            for(int i = 0; i < brStanovnika.length(); i++){
+                if(!(brStanovnika.charAt(i) >= '0' && brStanovnika.charAt(i) <= '9')){
+                    neispravno = true;
+                    break;
+                }
+            }
+            if(neispravno) fieldBrojStanovnika.setStyle("-fx-control-inner-background: #ee8787;");
+            else fieldBrojStanovnika.setStyle("-fx-control-inner-background: white;");
+        });
+
         fieldNaziv.textProperty().bindBidirectional(geografija.getTrenutniGrad().nazivProperty());
+
         fieldBrojStanovnika.textProperty().addListener((obs, oldBroj, newBroj) -> {
             if(fieldBrojStanovnika.getText().isEmpty())
                 geografija.getTrenutniGrad().brojStanovnikaProperty().set(0);
-            else
-                geografija.getTrenutniGrad().brojStanovnikaProperty().set(Integer.parseInt(newBroj));
+
+            else{
+                String brStanovnika = fieldBrojStanovnika.getText();
+                boolean neispravno = false;
+                for(int i = 0; i < brStanovnika.length(); i++){
+                    if(!(brStanovnika.charAt(i) >= '0' && brStanovnika.charAt(i) <= '9')){
+                        neispravno = true;
+                        break;
+                    }
+                }
+
+                if(!neispravno) geografija.getTrenutniGrad().brojStanovnikaProperty().set(Integer.parseInt(newBroj));
+            }
         });
         geografija.getTrenutniGrad().brojStanovnikaProperty().addListener((obs, oldBroj, newBroj) -> {
             fieldBrojStanovnika.textProperty().set(newBroj.toString());
@@ -93,14 +129,24 @@ public class GradController {
 
     @FXML
     public void onBtnOkClick(){
-        if(isDodaj()){
-            geografija.dodajGrad(geografija.getTrenutniGrad());
+        try{
+            if(isDodaj()){
+                geografija.dodajGrad(geografija.getTrenutniGrad());
+            }
+            else if(isIzmijeni()){
+                geografija.izmijeniGrad(geografija.getTrenutniGrad());
+            }
+            else if(isObrisi()){
+                geografija.obrisiGrad(geografija.getTrenutniGrad().getNaziv());
+            }
         }
-        else if(isIzmijeni()){
-            geografija.izmijeniGrad(geografija.getTrenutniGrad());
-        }
-        else if(isObrisi()){
-            geografija.obrisiGrad(geografija.getTrenutniGrad().getNaziv());
+        catch (org.sqlite.SQLiteException e) {
+            var alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Constraint Violation");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait().ifPresent((btnType) -> {
+                System.out.println();
+            });
         }
     }
     @FXML

@@ -74,6 +74,15 @@ public class DrzavaController {
             izabranGlavniGrad();
         });
 
+        fieldNaziv.textProperty().addListener((obs, oldDrzava, newDrzava) -> {
+            if(fieldNaziv.getText().trim().isEmpty()){
+                fieldNaziv.setStyle("-fx-control-inner-background: #ee8787;");
+            }
+            else{
+                fieldNaziv.setStyle("-fx-control-inner-background: white;");
+            }
+        });
+
         fieldNaziv.textProperty().bindBidirectional(geografija.getTrenutnaDrzava().nazivProperty());
         geografija.trenutnaDrzavaProperty().addListener((obs, oldDrzava, newDrzava) -> {
             if(oldDrzava != null){

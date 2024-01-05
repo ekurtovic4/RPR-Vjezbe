@@ -12,7 +12,7 @@
                <HBox.margin>
                   <Insets left="15.0" top="20.0" />
                </HBox.margin></Label>
-            <TextField fx:id="fieldNaziv">
+            <TextField fx:id="fieldNaziv" style="-fx-background-color: #ee8787;">
                <HBox.margin>
                   <Insets left="40.0" top="15.0" />
                </HBox.margin></TextField>

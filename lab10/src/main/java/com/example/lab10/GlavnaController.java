@@ -1,5 +1,6 @@
 package com.example.lab10;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,7 +38,11 @@ public class GlavnaController {
     public Button btnObrisiDrzavu;
     private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
 
-    private GeografijaDAO geo = GeografijaDAO.getInstance();
+    private static GeografijaDAO geo;
+
+    public GlavnaController(GeografijaDAO geo){
+        GlavnaController.geo = geo;
+    }
 
     @FXML
     public void initialize(){
@@ -151,11 +156,6 @@ public class GlavnaController {
             fxmlLoader.setController(dctrl);
             Scene scene = new Scene(fxmlLoader.load(), 300, 200);
             Stage stage = new Stage();
-
-            /*stage.setOnCloseRequest(event -> { //??
-                refreshTableViewGradovi()
-            });*/
-
             stage.setTitle("Drzava");
             stage.setScene(scene);
             stage.show();
